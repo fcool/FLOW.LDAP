@@ -14,6 +14,7 @@ use TYPO3\Flow\Persistence\QueryInterface;
 use TYPO3\Flow\Persistence\QueryResultInterface;
 
 class LdapQuery implements QueryInterface, \Countable {
+
 	/**
 	 * @var \KayStrobach\Ldap\Service\LdapInterface
 	 */
@@ -351,5 +352,27 @@ class LdapQuery implements QueryInterface, \Countable {
 	 */
 	public function greaterThanOrEqual($propertyName, $operand) {
 		return '(' . $propertyName . '>=' . EscapeUtility::escape($operand) . ')';
+	}
+
+	/**
+	 * Sets the DISTINCT flag for this query.
+	 *
+	 * @param boolean $distinct
+	 *
+	 * @return \TYPO3\Flow\Persistence\QueryInterface
+	 * @api
+	 */
+	public function setDistinct($distinct = TRUE) {
+		throw new \BadMethodCallException('This method is not implemented in this query implementation.');
+	}
+
+	/**
+	 * Returns the DISTINCT flag for this query.
+	 *
+	 * @return boolean
+	 * @api
+	 */
+	public function isDistinct() {
+		return FALSE;
 	}
 }
